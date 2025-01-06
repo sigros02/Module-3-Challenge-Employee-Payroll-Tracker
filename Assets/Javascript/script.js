@@ -6,10 +6,10 @@ Get user input to create and return an array of employee objects
 User inputs strings for first name, last name and salar
 Function returns array of employee objects using user inputs
 */
+
 const collectEmployees = function () {
   // declare empty array for employee objects
   let employees = [];
-
   // collect data at least once so user gets the chance to continue adding employees or cancel
   do {
     // collect string from user
@@ -57,9 +57,22 @@ const collectEmployees = function () {
   return employees;
 };
 
-// Display the average salary
+/* 
+calculate average of employees salaries and then display it in the console
+input an array of employee objects
+return the average of all salaries of employee objects
+*/
 const displayAverageSalary = function (employeesArray) {
-  // TODO: Calculate and display the average salary
+  // create array of salary property values from employees object array
+  let salaries = employeesArray.map((employee) => employee.salary);
+  // sum all salaries in array
+  let salariesSum = salaries.reduce((total, current) => total + current);
+  // calculate aveerage salary and round to nearest 2 decimal places
+  let averageSalary = (salariesSum / salaries.length).toFixed(2);
+  // display average salary in console
+  console.log(
+    `The average employee salary between our ${employeesArray.length} employee(s) is $${averageSalary}`
+  );
 };
 
 // Select a random employee

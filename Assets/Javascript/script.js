@@ -25,9 +25,10 @@ const collectEmployees = function () {
     // request salary from user until they enter a number
     do {
       // convert user input from string to number type
-      salary = parseInt(prompt("Enter salary:"));
+      salary = parseFloat(prompt("Enter salary:"));
       // if user clicks cancel then exit loop immediatley
-      if (salary == null) {
+      if (isNaN(salary)) {
+        salary = null;
         break;
       }
       // continue loop as long as user does not enter a number
@@ -60,7 +61,7 @@ const collectEmployees = function () {
 /* 
 calculate average of employees salaries and then display it in the console
 input an array of employee objects
-return the average of all salaries of employee objects
+nothing to return
 */
 const displayAverageSalary = function (employeesArray) {
   // create array of salary property values from employees object array
@@ -77,7 +78,18 @@ const displayAverageSalary = function (employeesArray) {
 
 // Select a random employee
 const getRandomEmployee = function (employeesArray) {
-  // TODO: Select and display a random employee
+  /*
+  choose a random employee name from the employee object array and display the name in console
+  input an array of employee objects
+  nothing to return
+  */
+  // generate random number between 0 and (array length -1)
+  let randomIndex = Math.floor(Math.random() * employeesArray.length);
+  console.log(randomIndex);
+  // print to console the first AND last name of the object located at random index of employees array
+  console.log(
+    `Congratulations to ${employeesArray[randomIndex].firstName} ${employeesArray[randomIndex].lastName}, our random drawing winner!`
+  );
 };
 
 /*
